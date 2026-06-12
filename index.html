@@ -91,7 +91,7 @@
       <li><span>Топ продавцов в предмете — <a href="https://seller.wildberries.ru/content-analytics/interactive-report/compareWB" target="_blank" rel="noopener">Воронка продаж → Сравнить с площадкой</a> → блок «Продавцы в предмете»</span></li>
       <li><span>Наша доля = наш оборот ÷ оборот предмета на WB (считается вручную)</span></li>
     </ul>
-    <div class="fn">* По плёнке выкуп 100% при практически нулевых продажах — статистика не показательна. Ссылки открываются при входе в кабинет seller.wildberries.ru.</div>
+    <div class="fn" id="footnote" hidden></div>
   </div>
 </div>
 
@@ -100,9 +100,17 @@ const fmt = n => n.toLocaleString('ru-RU');
 const cats = [
   {name:'Чехлы для телефонов', wb:2416155845, my:4712592, share:0.195, bWb:78, bMy:72},
   {name:'Защитные стёкла', wb:837176010, my:2848043, share:0.34, bWb:91, bMy:90},
-  {name:'Защитная плёнка', wb:166540120, my:5770, share:0.0035, bWb:91, bMy:100, note:'выкуп не показателен*'},
+  {name:'Защитная плёнка', wb:166540120, my:5770, share:0.0035, bWb:91, bMy:100},
   {name:'Кабели', wb:550993910, my:147242, share:0.027, bWb:90, bMy:87}
 ];
+const LOW = 50000;
+cats.forEach(c => { if (c.my < LOW) c.note = 'выкуп не показателен*'; });
+const lowCats = cats.filter(c => c.my < LOW).map(c => c.name.toLowerCase());
+if (lowCats.length) {
+  const fn = document.getElementById('footnote');
+  fn.hidden = false;
+  fn.textContent = `* ${lowCats.join(', ')}: продажи близки к нулю, процент выкупа не показателен.`;
+}
 const maxShare = 0.4;
 document.getElementById('rows').innerHTML = cats.map(c => {
   const cls = c.bMy >= c.bWb ? 'up' : 'down';
