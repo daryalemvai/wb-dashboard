@@ -44,8 +44,13 @@
   .tile .n{font-size:14px;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .tile .q{font-size:13px;color:var(--ink);margin-top:3px;}
   .tile .m{font-size:13px;font-weight:600;color:var(--blue);}
-  .src{font-size:11.5px;color:var(--blue);margin-top:30px;border-top:1px solid #e7edf3;padding-top:14px;line-height:1.6;}
-  .src b{font-weight:800;color:var(--navy);letter-spacing:.04em;text-transform:uppercase;font-size:11px;}
+  .src{font-size:12.5px;color:var(--ink);margin-top:30px;border-top:1px solid #e7edf3;padding-top:16px;line-height:1.6;}
+  .src .st{font-weight:800;color:var(--navy);letter-spacing:.06em;text-transform:uppercase;font-size:11px;margin-bottom:10px;}
+  .src ul{list-style:none;}
+  .src li{display:flex;gap:10px;align-items:baseline;margin-bottom:8px;}
+  .src li::before{content:"→";color:var(--blue);font-weight:800;flex:0 0 auto;}
+  .src a{color:var(--navy);font-weight:700;text-decoration:underline;text-decoration-color:var(--blue);text-underline-offset:3px;}
+  .src .fn{font-size:11px;color:var(--blue);margin-top:10px;}
   @media(max-width:640px){
     h1{font-size:26px;}
     .thead{display:none;}
@@ -79,7 +84,14 @@
   <div id="competitors"></div>
 
   <div class="src">
-    <b>Источники в кабинете продавца:</b> оборот и выкуп площадки — Аналитика → Анализ ниш → Месяц → Мои предметы; наш выкуп и оборот — Аналитика продавца → Воронка продаж → Фильтры → Предмет; топ продавцов — Воронка продаж → Сравнить с площадкой → Продавцы в предмете. Доля = наш оборот ÷ оборот предмета. * По плёнке выкуп 100% при практически нулевых продажах — статистика не показательна.
+    <div class="st">Источники в кабинете продавца</div>
+    <ul>
+      <li><span>Оборот WB и выкуп площадки — <a href="https://seller.wildberries.ru/platform-analytics/niche-analysis/main" target="_blank" rel="noopener">Анализ ниш</a> → Месяц → Мои предметы (колонки «Выручка» и «Процент выкупа»)</span></li>
+      <li><span>Наш оборот и наш выкуп — <a href="https://seller.wildberries.ru/content-analytics/interactive-report/main" target="_blank" rel="noopener">Воронка продаж</a> → период → Фильтры → Предмет (итоговая строка таблицы)</span></li>
+      <li><span>Топ продавцов в предмете — <a href="https://seller.wildberries.ru/content-analytics/interactive-report/compareWB" target="_blank" rel="noopener">Воронка продаж → Сравнить с площадкой</a> → блок «Продавцы в предмете»</span></li>
+      <li><span>Наша доля = наш оборот ÷ оборот предмета на WB (считается вручную)</span></li>
+    </ul>
+    <div class="fn">* По плёнке выкуп 100% при практически нулевых продажах — статистика не показательна. Ссылки открываются при входе в кабинет seller.wildberries.ru.</div>
   </div>
 </div>
 
