@@ -67,12 +67,12 @@
 <div class="wrap">
   <div class="eyebrow">Ежемесячная сводка</div>
   <h1>ROSCO на Wildberries —<br>наши значения по категориям</h1>
-  <div class="period">Май 2026 · обновлено 12.06.2026</div>
+  <div class="period">Август 2026 · обновлено 06.09.2026</div>
 
   <div class="kpis">
-    <div class="card kpi"><span class="tag">Наш оборот, 4 категории</span><div class="num">8,14 млн ₽</div></div>
-    <div class="card kpi"><span class="tag">Рынок этих категорий</span><div class="num">3,98 млрд ₽</div></div>
-    <div class="card kpi"><span class="tag">Средняя доля</span><div class="num">0,15%</div></div>
+    <div class="card kpi"><span class="tag">Наш оборот, 4 категории</span><div class="num">8,06 млн ₽</div></div>
+    <div class="card kpi"><span class="tag">Рынок этих категорий</span><div class="num">2,59 млрд ₽</div></div>
+    <div class="card kpi"><span class="tag">Средняя доля</span><div class="num">0,31%</div></div>
   </div>
 
   <div class="card panel">
@@ -97,12 +97,12 @@
 <script>
 const fmt = n => n.toLocaleString('ru-RU');
 const cats = [
-  {name:'Чехлы для телефонов', wb:2421966285, my:5049242, share:0.208, bWb:78, bMy:72},
-  {name:'Защитные стёкла', wb:838636960, my:2963387, share:0.353, bWb:91, bMy:89},
-  {name:'Защитная плёнка', wb:167483445, my:2685, share:0.0016, bWb:91, bMy:100},
-  {name:'Кабели', wb:550899478, my:129513, share:0.024, bWb:90, bMy:87}
+  {name:'Чехлы для телефонов', wb:1639695440, my:5235118, share:0.319, bWb:72, bMy:70},
+  {name:'Защитные стёкла', wb:568946050, my:2603505, share:0.458, bWb:85, bMy:86},
+  {name:'Защитная плёнка', wb:101580200, my:19627, share:0.019, bWb:84, bMy:79},
+  {name:'Кабели', wb:281962815, my:204978, share:0.073, bWb:83, bMy:82}
 ];
-const maxShare = 0.4;
+const maxShare = 0.5;
 document.getElementById('rows').innerHTML = cats.map(c => {
   const cls = c.bMy >= c.bWb ? 'up' : 'down';
   const ar = c.bMy >= c.bWb ? '↗' : '↘';
@@ -117,21 +117,21 @@ document.getElementById('rows').innerHTML = cats.map(c => {
 
 const groups = [
   {label:'Чехлы', list:[
-    {name:'Case Place', url:'https://www.wildberries.ru/seller/1410416', qty:300427, rub:'~150 млн ₽'},
-    {name:'КейсБерри', url:'https://www.wildberries.ru/seller/31625', qty:235613, rub:'~125 млн ₽'},
-    {name:'vipsales.ru', url:'https://www.wildberries.ru/seller/18060', qty:132087, rub:'~77,5 млн ₽'}]},
+    {name:'Case Place', url:'https://www.wildberries.ru/seller/1410416', qty:221577, rub:'~100 млн ₽'},
+    {name:'КейсБерри', url:'https://www.wildberries.ru/seller/31625', qty:193959, rub:'~85 млн ₽'},
+    {name:'Мобимания', url:'https://www.wildberries.ru/seller/978936', qty:284885, rub:'~67,5 млн ₽'}]},
   {label:'Стёкла', list:[
-    {name:'REMAX', url:'https://www.wildberries.ru/seller/81956', qty:164622, rub:'~75 млн ₽'},
-    {name:'Magic Protection', url:'https://www.wildberries.ru/seller/1318872', qty:92401, rub:'~50 млн ₽'},
-    {name:'Гаджетшоп', url:'https://www.wildberries.ru/seller/4140535', qty:91940, rub:'~50 млн ₽'}]},
+    {name:'REMAX', url:'https://www.wildberries.ru/seller/81956', qty:122450, rub:'~55 млн ₽'},
+    {name:'БТ', url:'https://www.wildberries.ru/seller/39611', qty:180828, rub:'~47,5 млн ₽'},
+    {name:'Magic Protection', url:'https://www.wildberries.ru/seller/1318872', qty:78415, rub:'~37,5 млн ₽'}]},
   {label:'Плёнки', list:[
-    {name:'ПлёнкоMania', url:'https://www.wildberries.ru/seller/1392861', qty:37132, rub:'~17,5 млн ₽'},
-    {name:'CROM', url:'https://www.wildberries.ru/seller/1202514', qty:36776, rub:'~17,5 млн ₽'},
-    {name:'МАКАРДАК', url:'https://www.wildberries.ru/seller/1290830', qty:16823, rub:'~7 млн ₽'}]},
+    {name:'ПлёнкоMania', url:'https://www.wildberries.ru/seller/1392861', qty:27268, rub:'~15 млн ₽'},
+    {name:'CROM', url:'https://www.wildberries.ru/seller/1202514', qty:20894, rub:'~10 млн ₽'},
+    {name:'МАКАРДАК', url:'https://www.wildberries.ru/seller/1290830', qty:11463, rub:'~5,5 млн ₽'}]},
   {label:'Кабели', list:[
-    {name:'STIMAXON', url:'https://www.wildberries.ru/seller/394327', qty:143266, rub:'~60 млн ₽'},
-    {name:'ИНДИГО', url:'https://www.wildberries.ru/seller/48776', qty:74035, rub:'~32,5 млн ₽'},
-    {name:'КЛАВТОРГ', url:'https://www.wildberries.ru/seller/65069', qty:135404, rub:'~32,5 млн ₽'}]}
+    {name:'STIMAXON', url:'https://www.wildberries.ru/seller/394327', qty:69443, rub:'~32,5 млн ₽'},
+    {name:'ИНДИГО', url:'https://www.wildberries.ru/seller/48776', qty:81995, rub:'~30 млн ₽'},
+    {name:'КЛАВТОРГ', url:'https://www.wildberries.ru/seller/65069', qty:93299, rub:'~22,5 млн ₽'}]}
 ];
 document.getElementById('competitors').innerHTML = groups.map(g => `
   <div class="grp">
