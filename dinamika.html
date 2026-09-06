@@ -160,7 +160,7 @@ document.getElementById('cmp').innerHTML=CATS.map(c=>{
  const line=(name,rub,qty,cls)=>{
    const [ra,rb,rd]=P(rub), [qa,qb,qd]=P(qty);
    return `<tr class="${cls||''}"><td>${name}</td>
-     <td>${ra==null?'—':ru(ra,ra<1000?1:0)}</td><td>${rb==null?'—':ru(rb,rb<1000?1:0)}</td>${dcell(rd)}
+     <td>${ra==null?'—':ru(ra,ra<1?3:(ra<100?2:(ra<1000?1:0)))}</td><td>${rb==null?'—':ru(rb,rb<1?3:(rb<100?2:(rb<1000?1:0)))}</td>${dcell(rd)}
      <td>${qa==null?'—':ru(qa)}</td><td>${qb==null?'—':ru(qb)}</td>${dcell(qd)}</tr>`};
  let rows = line('Мы, млн ₽', d.our_r.map(v=>v/1e6), d.our_q, 'us');
  rows += line('Весь предмет на WB, млн ₽', d.mk_r, d.mk_q, 'mkt');
