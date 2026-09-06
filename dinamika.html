@@ -124,7 +124,7 @@ const P=a=>{const A=a.slice(0,2),B=a.slice(2);
   if(A.includes(null)||B.includes(null))return[null,null,null];
   const x=A[0]+A[1],y=B[0]+B[1];return[x,y,Math.round((y/x-1)*1000)/10]};
 const dcell=v=>v==null?'<td>—</td>':`<td class="${v>=0?'pos':'neg'}">${v>0?'+':''}${ru(v,1)}%</td>`;
-const ppcell=v=>v==null?'<td>—</td>':`<td class="${v>=0?'pos':'neg'}">${v>0?'+':''}${ru(v,2)} п.п.</td>`;
+const ppcell=v=>v==null?'<td>—</td>':`<td class="${v>=0?'pos':'neg'}">${v>0?'+':''}${ru(v,Math.abs(v)<0.1?4:2)} п.п.</td>`;
 const money=v=>v==null?'—':ru(v,v<1?3:(v<100?2:(v<1000?1:0)));
 
 // ---- 1. итого
@@ -165,7 +165,7 @@ document.getElementById('cmp').innerHTML=CATS.map(c=>{
    const a=(d.our_r[0]+d.our_r[1])/((d.mk_r[0]+d.mk_r[1])*1e6)*100;
    const b=(d.our_r[2]+d.our_r[3])/((d.mk_r[2]+d.mk_r[3])*1e6)*100;
    const dg=Math.round((b/a-1)*1000)/10;
-   return `<tr><td>${c}</td><td>${ru(a,a<0.05?4:3)}%</td><td>${ru(b,b<0.05?4:3)}%</td>${ppcell(Math.round((b-a)*1000)/1000)}${dcell(dg)}</tr>`}).join('');
+   return `<tr><td>${c}</td><td>${ru(a,a<0.05?4:3)}%</td><td>${ru(b,b<0.05?4:3)}%</td>${ppcell(Math.round((b-a)*10000)/10000)}${dcell(dg)}</tr>`}).join('');
  document.getElementById('share').innerHTML=
   `<thead><tr><th>Категория</th><th>Май + июнь</th><th>Июль + август</th><th>Δ, п.п.</th><th>Δ, %</th></tr></thead><tbody>`+
   rows+`<tr class="tot"><td>Итого 4 категории</td><td>${ru(tShareA,3)}%</td><td>${ru(tShareB,3)}%</td>${ppcell(Math.round((tShareB-tShareA)*1000)/1000)}${dcell(Math.round((tShareB/tShareA-1)*1000)/10)}</tr></tbody>`;
