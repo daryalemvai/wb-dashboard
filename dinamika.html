@@ -23,28 +23,26 @@
   .kpi{padding:22px 24px 20px;}
   .kpi .tag{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
   .kpi .num{font-size:30px;font-weight:800;line-height:1;color:var(--navy);letter-spacing:-.01em;}
-  .kpi .num.up{color:var(--navy);} .kpi .num.dn{color:var(--red);}
+  .kpi .num.dn{color:var(--red);}
   .kpi .sub{font-size:12.5px;color:var(--ink);margin-top:6px;}
   .badge-h{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:7px 16px;border-radius:20px;margin:30px 0 14px;}
-  .lead{font-size:14px;color:var(--ink);margin-bottom:14px;max-width:800px;}
+  .lead{font-size:14px;color:var(--ink);margin-bottom:14px;max-width:820px;}
   .panel{padding:22px 24px 18px;margin-bottom:14px;}
   .ttl{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:12px;}
+  .ttl span{font-weight:600;color:var(--blue);font-size:13px;}
   table{width:100%;border-collapse:collapse;font-size:13.5px;}
   th,td{padding:9px 10px;text-align:right;border-bottom:1px solid #eef3f7;white-space:nowrap;}
   th{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);border-bottom:1px solid #e7edf3;}
   th:first-child,td:first-child{text-align:left;font-weight:700;color:var(--navy);}
   tr:last-child td{border-bottom:none;}
   tr.us td{background:var(--cyan);}
-  tr.mkt td{background:#F5F7FA;font-style:normal;}
-  tr.us td:first-child{color:var(--navy);}
+  tr.mkt td{background:#F5F7FA;}
+  tr.tot td{background:var(--navy);color:#fff;font-weight:800;}
+  tr.tot td:first-child{color:#fff;}
+  tr.tot .pos,tr.tot .neg{color:#fff;}
   .pos{color:var(--navy);font-weight:800;}
   .neg{color:var(--red);font-weight:800;}
   .tblwrap{overflow-x:auto;}
-  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:10px;}
-  .legend span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--navy);}
-  .legend i{width:14px;height:3px;border-radius:2px;display:block;}
-  .chartbox{overflow-x:auto;}
-  svg{display:block;min-width:520px;}
   .src{font-size:12.5px;color:var(--ink);margin-top:30px;border-top:1px solid #e7edf3;padding-top:16px;line-height:1.6;}
   .src .st{font-weight:800;color:var(--navy);letter-spacing:.06em;text-transform:uppercase;font-size:11px;margin-bottom:10px;}
   .src ul{list-style:none;}
@@ -65,44 +63,34 @@
   <a class="backlink" href="./">← к сводке за август</a>
 
   <div class="kpis">
-    <div class="card kpi"><span class="tag">Наш оборот</span><div class="num up">+16,7%</div><div class="sub">14,99 → 17,50 млн ₽</div></div>
+    <div class="card kpi"><span class="tag">Наш оборот</span><div class="num">+16,7%</div><div class="sub">14,99 → 17,50 млн ₽</div></div>
     <div class="card kpi"><span class="tag">Рынок 4 категорий</span><div class="num dn">−16,9%</div><div class="sub">10,76 → 8,94 млрд ₽</div></div>
-    <div class="card kpi"><span class="tag">Лидеры категорий</span><div class="num dn">−19,6%</div><div class="sub">612,5 → 492,5 млн ₽</div></div>
-    <div class="card kpi"><span class="tag">Разрыв в темпе</span><div class="num up">34 п.п.</div><div class="sub">мы против площадки</div></div>
+    <div class="card kpi"><span class="tag">Наша доля рынка</span><div class="num">0,196%</div><div class="sub">было 0,139%</div></div>
+    <div class="card kpi"><span class="tag">Наши продажи в штуках</span><div class="num">+26,3%</div><div class="sub">19 572 → 24 714 шт</div></div>
   </div>
 
-  <div class="badge-h">1 · Мы, площадка и топ-3 по каждой категории</div>
-  <div class="lead">Слева — май + июнь, справа — июль + август. Из двенадцати продавцов топ-3 в плюс вышел ровно один — ИНДИГО в кабелях. Все остальные, включая лидеров, потеряли и в деньгах, и в штуках. Прочерк — в один из месяцев продавец не входил в тройку, поэтому кабинет его оборот не показал.</div>
+  <div class="badge-h">1 · Итого по четырём категориям</div>
+  <div class="lead">Чехлы, защитные стёкла, защитная плёнка и кабели, сложенные вместе. Мы прибавили и в деньгах, и в штуках; площадка потеряла примерно одинаково и там, и там.</div>
+  <div class="card panel"><div class="tblwrap"><table id="total"></table></div></div>
+
+  <div class="badge-h">2 · По категориям: мы, весь предмет и топ-3</div>
+  <div class="lead">Из двенадцати продавцов топ-3 в плюс по обороту вышел ровно один — ИНДИГО в кабелях. Прочерк — в одном из двух периодов продавец не входил в тройку, и кабинет его оборот не показывает.</div>
   <div id="cmp"></div>
 
-  <div class="badge-h">2 · Как это выглядит по месяцам</div>
-  <div class="lead">Обороты категорий на WB, млн ₽ заказов — и наша доля в них.</div>
-  <div class="card panel">
-    <div class="ttl">Обороты категорий на WB, млн ₽</div>
-    <div class="legend" id="lg1"></div>
-    <div class="chartbox"><svg id="ch1" viewBox="0 0 720 250" width="100%" height="250"></svg></div>
-  </div>
-  <div class="card panel">
-    <div class="ttl">Наша доля в категории, %</div>
-    <div class="legend" id="lg2"></div>
-    <div class="chartbox"><svg id="ch2" viewBox="0 0 720 250" width="100%" height="250"></svg></div>
-    <div class="tblwrap"><table id="t2"></table></div>
-  </div>
+  <div class="badge-h">3 · Наша доля в каждой категории</div>
+  <div class="lead">Наш оборот, делённый на оборот всего предмета на WB, за два месяца против двух.</div>
+  <div class="card panel"><div class="tblwrap"><table id="share"></table></div></div>
 
-  <div class="badge-h">3 · Топ-3 продавца по месяцам</div>
-  <div class="lead">Обороты лидеров, млн ₽. Прочерк — в этот месяц продавец не входил в топ-3.</div>
-  <div id="tops"></div>
+  <div class="badge-h">4 · Доли продавцов в предмете</div>
+  <div class="lead">Сколько процентов оборота предмета забирает каждый из тройки и мы. Δ — изменение в процентных пунктах. Здесь видно, что почти все топы падали медленнее рынка и потому долю нарастили; в минус по доле ушли только REMAX и STIMAXON.</div>
+  <div id="shares"></div>
 
   <div class="badge-h">Вывод</div>
   <div class="card concl">
-    <p><b>Мы отыграли у площадки 34 процентных пункта темпа.</b> Наш оборот по четырём категориям вырос с 14,99 до 17,50 млн ₽ (+16,7%), рынок этих же категорий упал с 10,76 до 8,94 млрд ₽ (−16,9%). Мы растём не только в доле, но и в абсолюте — это разные вещи, и здесь совпало и то и другое.</p>
-    <p><b>Чехлы.</b> Наш оборот +21%, штуки +32%. Рынок −17%, Case Place −17% в деньгах и −27% в штуках. Доля выросла с 0,124% до 0,182%.</p>
-    <p><b>Кабели.</b> Наш оборот +34%, штуки +40%. Рынок −22%, STIMAXON −30% в деньгах и −38% в штуках — сильнее всех потерял именно лидер. Доля с 0,023% до 0,039%.</p>
-    <p><b>Кто вырос кроме нас.</b> Из двенадцати продавцов топ-3 в плюсе только ИНДИГО в кабелях: +3,6% в деньгах и +14% в штуках. Он и забрал часть объёма, который потерял STIMAXON. Все остальные одиннадцать — в минусе, мягче всех упали КейсБерри (−6,7% в деньгах, −2,8% в штуках) и МАКАРДАК (−3,3%).</p>
-    <p><b>Стёкла.</b> Самый скромный рост: +8,7% в деньгах, +18% в штуках — то есть средний чек просел. Рынок −13%, REMAX −21%. Доля с 0,301% до 0,376%.</p>
-    <p><b>Плёнка.</b> С нуля: 13 тыс. → 46 тыс. ₽. Категория пока на уровне погрешности, лидеры делают по 15–22 млн ₽ за два месяца.</p>
-    <p><b>Про пожар.</b> Июль, когда горели склады, у нас лучший месяц с начала года: 5,59 млн ₽ по чехлам и 3,62 млн ₽ по стёклам. Провал пришёлся на август, но он совпал с обвалом всей площадки на треть — то есть это рынок, а не последствия пожара.</p>
-    <p><b>Что держать в голове.</b> Часть нашего выигрыша в доле — это падение площадки, а не только наш рост. Но и в штуках, и в рублях мы прибавили в абсолютных числах, поэтому вывод устойчив.</p>
+    <p><b>Мы растём, площадка падает.</b> Наш оборот по четырём категориям 14,99 → 17,50 млн ₽ (+16,7%), рынок этих же категорий 10,76 → 8,94 млрд ₽ (−16,9%). В штуках то же самое: мы +26,3%, рынок −16,7%. Наша доля выросла с 0,139% до 0,196%.</p>
+    <p><b>Кто ещё вырос.</b> Из двенадцати продавцов топ-3 по обороту в плюсе только ИНДИГО в кабелях: +3,6% в деньгах и +14% в штуках — он подобрал объём, который потерял STIMAXON. Мягче всех упали КейсБерри (−6,7%) и МАКАРДАК (−3,3%), остальные девять просели сильнее.</p>
+    <p><b>В долях картина другая.</b> Рынок упал так сильно, что почти все лидеры нарастили долю, просто падая медленнее площадки. Реально потеряли позиции только REMAX (−0,76 п.п.) и STIMAXON (−0,93 п.п.). Мы прибавили меньше в процентных пунктах — база маленькая, — но в относительном выражении выросли сильнее всех: +40%.</p>
+    <p><b>Про пожар.</b> Июль, когда горели склады, у нас лучший месяц с начала года: 5,59 млн ₽ по чехлам и 3,62 млн ₽ по стёклам. Просадка пришлась на август и совпала с обвалом всей площадки примерно на треть — то есть это рынок, а не последствия пожара.</p>
   </div>
 
   <div class="src">
@@ -116,100 +104,88 @@
 </div>
 
 <script>
-const M=["Янв","Фев","Мар","Апр","Май","Июн","Июл","Авг"];
 const CATS=["Чехлы","Стёкла","Плёнка","Кабели"];
-const COL={"Чехлы":"#2F465F","Стёкла":"#6696B7","Плёнка":"#9BC4D8","Кабели":"#C2536B"};
-const LEADER={"Чехлы":"Case Place","Стёкла":"REMAX","Плёнка":"ПлёнкоMania","Кабели":"STIMAXON"};
+// [май, июнь, июль, август]
+const D={
+ "Чехлы":{our_r:[5047707,3903660,5593475,5235118],our_q:[5952,4880,7297,6974],mk_r:[3602.5,3600,3580,2385],mk_q:[6322489,6490976,6377167,4581300]},
+ "Стёкла":{our_r:[2962212,2765098,3623598,2603505],our_q:[4206,4027,5624,4075],mk_r:[950,952.5,970,687.5],mk_q:[2318790,2347068,2296612,1590572]},
+ "Плёнка":{our_r:[2685,10423,25894,19627],our_q:[5,19,37,33],mk_r:[180,182.75,190,121],mk_q:[406370,410787,392377,243466]},
+ "Кабели":{our_r:[129513,167170,191273,204978],our_q:[213,270,322,352],mk_r:[655,632.5,637.5,368.5],mk_q:[1411640,1378905,1316820,768620]}
+};
 const SELLERS={
  "Чехлы":[["Case Place",[150,150,150,100],[300427,422227,303587,221577]],["КейсБерри",[125,100,125,85],[235613,234034,262770,193959]],["vipsales.ru",[77.5,87.5,80,null],[132087,173383,128993,null]],["Мобимания",[null,null,null,67.5],[null,null,null,284885]]],
  "Стёкла":[["REMAX",[75,80,67.5,55],[164622,177331,145388,122450]],["Magic Protection",[50,45,47.5,37.5],[92401,82057,88448,78415]],["БТ",[null,50,60,47.5],[null,201089,240634,180828]]],
  "Плёнка":[["ПлёнкоMania",[17.5,22.5,22.5,15],[37132,50589,43105,27268]],["CROM",[17.5,17.5,20,10],[36776,39798,39373,20894]],["МАКАРДАК",[7,8.25,9.25,5.5],[16823,19840,21206,11463]]],
- "Кабели":[["STIMAXON",[60,57.5,50,32.5],[143266,134667,103006,69443]],["ИНДИГО",[32.5,37.5,42.5,30],[74035,87734,102351,81995]],["КЛАВТОРГ",[32.5,32.5,32.5,22.5],[135404,133864,140487,93299]]]};
-
-// последние 4 месяца: май, июнь, июль, август
-const D={
- "Чехлы":{our_r:[5047707,3903660,5593475,5235118],our_q:[5952,4880,7297,6974],mk_r:[3602.5,3600,3580,2385],mk_q:[6322489,6490976,6377167,4581300],t1_r:[150,150,150,100],t1_q:[300427,422227,303587,221577]},
- "Стёкла":{our_r:[2962212,2765098,3623598,2603505],our_q:[4206,4027,5624,4075],mk_r:[950,952.5,970,687.5],mk_q:[2318790,2347068,2296612,1590572],t1_r:[75,80,67.5,55],t1_q:[164622,177331,145388,122450]},
- "Плёнка":{our_r:[2685,10423,25894,19627],our_q:[5,19,37,33],mk_r:[180,182.75,190,121],mk_q:[406370,410787,392377,243466],t1_r:[17.5,22.5,22.5,15],t1_q:[37132,50589,43105,27268]},
- "Кабели":{our_r:[129513,167170,191273,204978],our_q:[213,270,322,352],mk_r:[655,632.5,637.5,368.5],mk_q:[1411640,1378905,1316820,768620],t1_r:[60,57.5,50,32.5],t1_q:[143266,134667,103006,69443]}
+ "Кабели":[["STIMAXON",[60,57.5,50,32.5],[143266,134667,103006,69443]],["ИНДИГО",[32.5,37.5,42.5,30],[74035,87734,102351,81995]],["КЛАВТОРГ",[32.5,32.5,32.5,22.5],[135404,133864,140487,93299]]]
 };
-// помесячно с января (для графиков)
-const our8={"Чехлы":[5816073,4615915,4612889,5001224,5047707,3903660,5593475,5235118],
- "Стёкла":[3411193,3376551,3348243,2751857,2962212,2765098,3623598,2603505],
- "Плёнка":[0,617,1234,0,2685,10423,25894,19627],
- "Кабели":[171427,252762,148853,88596,129513,167170,191273,204978]};
-const mk8={"Чехлы":[null,null,null,3567.5,3602.5,3600,3580,2385],
- "Стёкла":[null,null,null,875,950,952.5,970,687.5],
- "Плёнка":[null,null,null,167.5,180,182.75,190,121],
- "Кабели":[null,null,null,627.5,655,632.5,637.5,368.5]};
-const tops={
- "Чехлы":[["Case Place",[225,200,200,150,150,150,150,100]],["КейсБерри",[150,150,150,125,125,100,125,85]],["Мобимания",[92.5,75,75,null,null,null,null,67.5]],["vipsales.ru",[null,null,null,72.5,77.5,87.5,80,null]]],
- "Стёкла":[["REMAX",[72.5,55,62.5,65,75,80,67.5,55]],["БТ",[57.5,50,50,45,null,50,60,47.5]],["Magic Protection",[52.5,45,50,52.5,50,45,47.5,37.5]],["Гаджетшоп",[null,null,null,null,50,null,null,null]]],
- "Плёнка":[["ПлёнкоMania",[8,10,15,15,17.5,22.5,22.5,15]],["CROM",[15,15,15,15,17.5,17.5,20,10]],["МАКАРДАК",[7.5,6.25,6.75,null,7,8.25,9.25,5.5]],["Товары для упаковки",[null,null,null,7,null,null,null,null]]],
- "Кабели":[["STIMAXON",[85,77.5,65,57.5,60,57.5,50,32.5]],["КЛАВТОРГ",[40,35,32.5,32.5,32.5,32.5,32.5,22.5]],["ИНДИГО",[30,32.5,37.5,32.5,32.5,37.5,42.5,30]]]};
 
 const ru=(n,d)=>n==null?"—":n.toLocaleString('ru-RU',{minimumFractionDigits:d||0,maximumFractionDigits:d===undefined?0:d});
-const sumA=a=>a[0]+a[1], sumB=a=>a[2]+a[3];
-const pct=(x,y)=>x?Math.round((y/x-1)*1000)/10:null;
+const P=a=>{const A=a.slice(0,2),B=a.slice(2);
+  if(A.includes(null)||B.includes(null))return[null,null,null];
+  const x=A[0]+A[1],y=B[0]+B[1];return[x,y,Math.round((y/x-1)*1000)/10]};
 const dcell=v=>v==null?'<td>—</td>':`<td class="${v>=0?'pos':'neg'}">${v>0?'+':''}${ru(v,1)}%</td>`;
+const ppcell=v=>v==null?'<td>—</td>':`<td class="${v>=0?'pos':'neg'}">${v>0?'+':''}${ru(v,2)} п.п.</td>`;
+const money=v=>v==null?'—':ru(v,v<1?3:(v<100?2:(v<1000?1:0)));
 
+// ---- 1. итого
+const sum=k=>CATS.reduce((acc,c)=>acc.map((v,i)=>v+(k==='our_r'?D[c].our_r[i]/1e6:D[c][k][i])),[0,0,0,0]);
+const T={our_r:sum('our_r'),our_q:sum('our_q'),mk_r:sum('mk_r'),mk_q:sum('mk_q')};
+const tShareA=(T.our_r[0]+T.our_r[1])/(T.mk_r[0]+T.mk_r[1])*100;
+const tShareB=(T.our_r[2]+T.our_r[3])/(T.mk_r[2]+T.mk_r[3])*100;
+(function(){
+ const row=(name,arr,fmt,cls)=>{const[a,b,d]=P(arr);return `<tr class="${cls||''}"><td>${name}</td><td>${fmt(a)}</td><td>${fmt(b)}</td>${dcell(d)}</tr>`};
+ document.getElementById('total').innerHTML=
+  `<thead><tr><th>Показатель</th><th>Май + июнь</th><th>Июль + август</th><th>Δ</th></tr></thead><tbody>`+
+  row('Наш оборот, млн ₽',T.our_r,v=>ru(v,2),'us')+
+  row('Мы, заказали шт',T.our_q,v=>ru(v),'us')+
+  row('Рынок 4 категорий, млн ₽',T.mk_r,v=>ru(v),'mkt')+
+  row('Рынок, заказали шт',T.mk_q,v=>ru(v),'mkt')+
+  `<tr class="tot"><td>Наша доля рынка</td><td>${ru(tShareA,3)}%</td><td>${ru(tShareB,3)}%</td>${dcell(Math.round((tShareB/tShareA-1)*1000)/10)}</tr>`+
+  `</tbody>`;
+})();
+
+// ---- 2. по категориям
 document.getElementById('cmp').innerHTML=CATS.map(c=>{
  const d=D[c];
- const P=a=>{const A=a.slice(0,2),B=a.slice(2);if(A.includes(null)||B.includes(null))return[null,null,null];
-   const x=A[0]+A[1],y=B[0]+B[1];return[x,y,Math.round((y/x-1)*1000)/10]};
  const line=(name,rub,qty,cls)=>{
-   const [ra,rb,rd]=P(rub), [qa,qb,qd]=P(qty);
-   return `<tr class="${cls||''}"><td>${name}</td>
-     <td>${ra==null?'—':ru(ra,ra<1?3:(ra<100?2:(ra<1000?1:0)))}</td><td>${rb==null?'—':ru(rb,rb<1?3:(rb<100?2:(rb<1000?1:0)))}</td>${dcell(rd)}
-     <td>${qa==null?'—':ru(qa)}</td><td>${qb==null?'—':ru(qb)}</td>${dcell(qd)}</tr>`};
- let rows = line('Мы, млн ₽', d.our_r.map(v=>v/1e6), d.our_q, 'us');
- rows += line('Весь предмет на WB, млн ₽', d.mk_r, d.mk_q, 'mkt');
- SELLERS[c].forEach(([n,r,q])=>{rows+=line(n+', млн ₽', r, q)});
- const share_a=(d.our_r[0]+d.our_r[1])/((d.mk_r[0]+d.mk_r[1])*1e6)*100;
- const share_b=(d.our_r[2]+d.our_r[3])/((d.mk_r[2]+d.mk_r[3])*1e6)*100;
- return `<div class="card panel">
-  <div class="ttl">${c} <span style="font-weight:600;color:#6696B7;font-size:13px">· наша доля ${ru(share_a,share_a<0.05?3:2)}% → ${ru(share_b,share_b<0.05?3:2)}%</span></div>
-  <div class="tblwrap"><table>
+   const[ra,rb,rd]=P(rub),[qa,qb,qd]=P(qty);
+   return `<tr class="${cls||''}"><td>${name}</td><td>${money(ra)}</td><td>${money(rb)}</td>${dcell(rd)}<td>${ru(qa)}</td><td>${ru(qb)}</td>${dcell(qd)}</tr>`};
+ let rows=line('Мы',d.our_r.map(v=>v/1e6),d.our_q,'us')+line('Весь предмет на WB',d.mk_r,d.mk_q,'mkt');
+ SELLERS[c].forEach(([n,r,q])=>{rows+=line(n,r,q)});
+ return `<div class="card panel"><div class="ttl">${c}</div><div class="tblwrap"><table>
    <thead><tr><th rowspan="2">Продавец</th><th colspan="3">Оборот, млн ₽</th><th colspan="3">Заказали, шт</th></tr>
    <tr><th>май+июн</th><th>июл+авг</th><th>Δ</th><th>май+июн</th><th>июл+авг</th><th>Δ</th></tr></thead>
-   <tbody>${rows}</tbody>
-  </table></div></div>`;
+   <tbody>${rows}</tbody></table></div></div>`;
 }).join('');
 
-function chart(id,series,fmt){
-  const W=720,H=250,L=54,R=14,T=14,B=30;
-  const vals=[].concat(...series.map(s=>s.data)).filter(v=>v!=null);
-  const max=Math.max(...vals),min=0;
-  const x=i=>L+i*(W-L-R)/(M.length-1);
-  const y=v=>H-B-(v-min)/(max-min||1)*(H-T-B);
-  let g='';
-  for(let k=0;k<=4;k++){const v=min+(max-min)*k/4,yy=y(v);
-    g+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="#eef3f7"/>`+
-       `<text x="${L-8}" y="${yy+4}" text-anchor="end" font-size="10" fill="#6696B7">${fmt(v)}</text>`;}
-  g+=`<rect x="${x(6)-((x(1)-x(0))/2)}" y="${T}" width="${(x(7)-x(6))+(x(1)-x(0))}" height="${H-T-B}" fill="#D9F8FF" opacity=".45"/>`;
-  M.forEach((m,i)=>{g+=`<text x="${x(i)}" y="${H-9}" text-anchor="middle" font-size="11" fill="#6696B7">${m}</text>`});
-  series.forEach(s=>{const pts=[];s.data.forEach((v,i)=>{if(v!=null)pts.push([x(i),y(v)])});
-    if(pts.length>1)g+=`<polyline fill="none" stroke="${s.color}" stroke-width="2.5" stroke-linejoin="round" points="${pts.map(p=>p.join(',')).join(' ')}"/>`;
-    pts.forEach(p=>{g+=`<circle cx="${p[0]}" cy="${p[1]}" r="3.4" fill="#fff" stroke="${s.color}" stroke-width="2"/>`});});
-  document.getElementById(id).innerHTML=g;
-}
-const legend=(id,s)=>document.getElementById(id).innerHTML=s.map(x=>`<span><i style="background:${x.color}"></i>${x.name}</span>`).join('');
+// ---- 3. наша доля
+(function(){
+ const rows=CATS.map(c=>{
+   const d=D[c];
+   const a=(d.our_r[0]+d.our_r[1])/((d.mk_r[0]+d.mk_r[1])*1e6)*100;
+   const b=(d.our_r[2]+d.our_r[3])/((d.mk_r[2]+d.mk_r[3])*1e6)*100;
+   const dg=Math.round((b/a-1)*1000)/10;
+   return `<tr><td>${c}</td><td>${ru(a,a<0.05?4:3)}%</td><td>${ru(b,b<0.05?4:3)}%</td>${ppcell(Math.round((b-a)*1000)/1000)}${dcell(dg)}</tr>`}).join('');
+ document.getElementById('share').innerHTML=
+  `<thead><tr><th>Категория</th><th>Май + июнь</th><th>Июль + август</th><th>Δ, п.п.</th><th>Δ, %</th></tr></thead><tbody>`+
+  rows+`<tr class="tot"><td>Итого 4 категории</td><td>${ru(tShareA,3)}%</td><td>${ru(tShareB,3)}%</td>${ppcell(Math.round((tShareB-tShareA)*1000)/1000)}${dcell(Math.round((tShareB/tShareA-1)*1000)/10)}</tr></tbody>`;
+})();
 
-const s1=CATS.map(c=>({name:c,color:COL[c],data:mk8[c]}));
-legend('lg1',s1);chart('ch1',s1,v=>ru(Math.round(v)));
-const s2=CATS.map(c=>({name:c,color:COL[c],data:M.map((_,i)=>mk8[c][i]?our8[c][i]/(mk8[c][i]*1e6)*100:null)}));
-legend('lg2',s2);chart('ch2',s2,v=>ru(v,2)+'%');
-document.getElementById('t2').innerHTML=`<thead><tr><th>Наша доля</th>${M.map(m=>`<th>${m}</th>`).join('')}</tr></thead><tbody>`+
- s2.map(s=>`<tr><td>${s.name}</td>${s.data.map(v=>`<td>${v==null?'—':ru(v,v<0.1?3:2)+'%'}</td>`).join('')}</tr>`).join('')+`</tbody>`;
-
-document.getElementById('tops').innerHTML=CATS.map(c=>`
- <div class="card panel">
-  <div class="ttl">${c}</div>
-  <div class="tblwrap"><table><thead><tr><th>Продавец, млн ₽</th>${M.map(m=>`<th>${m}</th>`).join('')}</tr></thead><tbody>
-  ${tops[c].map(([n,d])=>`<tr><td>${n}</td>${d.map(v=>`<td>${v==null?'—':ru(v,v%1?2:0)}</td>`).join('')}</tr>`).join('')}
-  <tr class="us"><td>Мы</td>${our8[c].map(v=>`<td>${ru(v/1e6,2)}</td>`).join('')}</tr>
-  </tbody></table></div>
- </div>`).join('');
+// ---- 4. доли продавцов
+document.getElementById('shares').innerHTML=CATS.map(c=>{
+ const d=D[c];
+ const mA=(d.mk_r[0]+d.mk_r[1]), mB=(d.mk_r[2]+d.mk_r[3]);
+ const line=(name,rub,cls)=>{
+   const[ra,rb]=P(rub);
+   if(ra==null)return `<tr class="${cls||''}"><td>${name}</td><td>—</td><td>—</td><td>—</td></tr>`;
+   const a=ra/mA*100,b=rb/mB*100;
+   return `<tr class="${cls||''}"><td>${name}</td><td>${ru(a,a<0.05?4:2)}%</td><td>${ru(b,b<0.05?4:2)}%</td>${ppcell(Math.round((b-a)*100)/100)}</tr>`};
+ let rows=line('Мы',d.our_r.map(v=>v/1e6),'us');
+ SELLERS[c].forEach(([n,r])=>{rows+=line(n,r)});
+ return `<div class="card panel"><div class="ttl">${c} <span>· весь предмет = 100%</span></div><div class="tblwrap"><table>
+  <thead><tr><th>Продавец</th><th>Май + июнь</th><th>Июль + август</th><th>Δ</th></tr></thead>
+  <tbody>${rows}</tbody></table></div></div>`;
+}).join('');
 </script>
 </body>
 </html>
